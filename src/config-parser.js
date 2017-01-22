@@ -8,12 +8,16 @@ function getConfiguration(configPath) {
   errors = [];
   if (configPath) {
     if (!fs.existsSync(configPath)) {
-      throw new Error('Could not find specified config file "' + configPath + '"');
+      // eslint-disable-next-line no-console
+      console.error('Could not find specified config file "' + configPath + '"');
+      process.exit(20);
     }
   } else {
     if (!fs.existsSync(defaultConfigFileName)) {
-      throw new Error('Could not find default config file "' + defaultConfigFileName +'" in the working ' +
-                      'directory. To use a custom name/location provide the config file using the "-c" arg');
+      // eslint-disable-next-line no-console
+      console.error('\x1b[31m\x1b[1mCould not find default config file "' + defaultConfigFileName +'" in the working ' +
+                      'directory.\nTo use a custom name/path provide the config file using the "-c" arg.\x1b[0m');
+      process.exit(21);
     }
     configPath = defaultConfigFileName;
   }
@@ -26,7 +30,7 @@ function getConfiguration(configPath) {
     errors.forEach(function(error){
       console.error('\x1b[31m- ' + error + '\x1b[0m');  // eslint-disable-line no-console
     });
-    throw new Error('Configuration error(s)');
+    process.exit(22);
   }
 
   return config;

@@ -39,7 +39,9 @@ function printResults(results, format) {
   } else if (!format || format == 'stylish') {
     formatter = require('./formatters/stylish.js');
   } else {
-    throw new Error('Unsupported format. The supported formats are json and stylish.');
+    // eslint-disable-next-line no-console
+    console.error('Unsupported format. The supported formats are json and stylish.');
+    process.exit(30);
   }
   formatter.printResults(results);
 }

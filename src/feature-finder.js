@@ -17,7 +17,9 @@ function getFeatureFiles(args, ignoreArg) {
     } else if (arg.match(/.*\.feature/)) {
       pattern = arg;
     } else {
-      throw new Error('Invalid input format. To run the linter please specify a feature file, directory or glob.');
+      // eslint-disable-next-line no-console
+      console.error('Invalid input format. To run the linter please specify a feature file, directory or glob.');
+      process.exit(10);
     }
 
     var globOptions = {ignore: getIgnorePatterns(ignoreArg)};
