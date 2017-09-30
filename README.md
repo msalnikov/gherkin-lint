@@ -13,6 +13,8 @@ npm install gherkin-lint
 ```
 
 ## Demo
+New changes!
+
 To see the output for all the errors that the linter can detect run:
 ```
 git clone https://github.com/vsiakka/gherkin-lint.git
