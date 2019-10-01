@@ -1,5 +1,6 @@
 var fs = require('fs');
 var rules = require('./rules.js');
+var someNewLineOfCode = '';
 
 var defaultConfigFileName = '.gherkin-lintrc';
 var errors;
